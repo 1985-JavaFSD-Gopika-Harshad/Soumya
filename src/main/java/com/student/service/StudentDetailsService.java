@@ -1,5 +1,7 @@
 package com.student.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +54,45 @@ public class StudentDetailsService {
 		catch (Exception e) {
 			throw new RuntimeException("failed to create student details");
 		}
+	}
+	
+	//get student details by studentId
+	public StudentDetailsResponse getStudentByStudentId(Long studentId) {
+		StudentDetails studentDetails = studentDetailsRepository.getStudentDetailsBystudentId(studentId);
+		return mapToStudentDetailsResponse(studentDetails);
+	}
+	
+	//get all student details 
+	public List<StudentDetailsResponse> getAllStudents(){
+		List<StudentDetails> studentDetails = studentDetailsRepository.findAll();
+		return studentDetails.stream()
+				.map(this::mapToStudentDetailsResponse)
+				.toList();
+	}
+	
+	// to update student details
+	public StudentDetailsResponse updateStudentDetails(StudentDetailsRequest studentDetailsRequest, Long studentId) {
+		StudentDetails studentDetails = studentDetailsRepository.getStudentDetailsBystudentId(studentId);
+		
+		studentDetails.setFirstName(studentDetailsRequest.getFirstName());
+		studentDetails.setLastName(studentDetailsRequest.getLastName());
+		studentDetails.setDateOfBirth(studentDetailsRequest.getDateOfBirth());
+		studentDetails.setGender(studentDetailsRequest.getGender());
+		studentDetails.setEmail(studentDetailsRequest.getEmail());
+		studentDetails.setPhoneNumber(studentDetailsRequest.getPhoneNumber());
+		studentDetails.setAddress(studentDetailsRequest.getAddress());
+
+		StudentDetails update = studentDetailsRepository.save(studentDetails);
+		return mapToStudentDetailsResponse(update);
+
+	}
+	
+	// to delete student details 
+	public boolean deleteStudentDeails(Long studentId) {
+		StudentDetails studentDetails = studentDetailsRepository.getStudentDetailsBystudentId(studentId);
+		studentDetailsRepository.delete(studentDetails);
+		return true;
+
 	}
 
 }
