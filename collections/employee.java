@@ -1,3 +1,5 @@
+//Scenario 4 : to store collection of employee objects and sort then a/c to their salary in desc order
+
 package coding_challenges.collections;
 
 import java.util.ArrayList;
@@ -42,19 +44,28 @@ public class employee {
 
 	public static void main(String[] args)
 	{
-		List<employee> emp= new ArrayList<>();
+		
+		List<employee> emp= new ArrayList<>();  // creating ArrayList to store employee objects
+		
+		//adding objs to list
 		emp.add(new employee("soumya", 25000));
-		emp.add(new employee("vyshnavi", 29000));
+		emp.add(new employee("vyshnavi", 39000));
 		emp.add(new employee("ananya", 35000));
 
+		
+		// sort employee in descending order based on salary using collections.sort() with a comparator
 		Collections.sort(emp, new Comparator<employee>() {
 
 			@Override
 			public int compare(employee e1, employee e2) {
- 				return Double.compare(e2.getSalary(), e1.getSalary());
+				
+ 	//			return Double.compare(e1.getSalary(), e2.getSalary()); //ascending order
+
+ 				return Double.compare(e2.getSalary(), e1.getSalary()); //descending order
 			}
 		});
 		
+		// to display the sorted list
 		for(employee e :emp) {
 			System.out.println(e);
 		}
