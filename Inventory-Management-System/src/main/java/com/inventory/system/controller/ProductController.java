@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.inventory.system.dto.ProductRequest;
+import com.inventory.system.dto.ProductResponse;
 import com.inventory.system.model.Product;
 import com.inventory.system.service.ProductService;
 
@@ -29,35 +31,40 @@ public class ProductController {
 	
 	
 	@PostMapping
-	public Product createProduct(@RequestBody Product product) {
-		return productService.createProduct(product);
+	public ProductResponse createProduct(ProductRequest productRequest) {
+		return productService.createProduct(productRequest);
 	}
+
 	
 	@GetMapping("{product_id}")
-	public Product getProductById(@PathVariable Long product_id) {
-		return productService.getProductById(product_id);
+	public ProductResponse getProductById(Long productId) {
+		return productService.getProductById(productId);
 	}
+
 	
 	@GetMapping("all")
-	public List<Product> getAllProducts(){
+	public List<ProductResponse> getAllProducts() {
 		return productService.getAllProducts();
 	}
+
 	
 	@PutMapping("update/{product_id}")
-	public Product updateProduct(@RequestBody Product product,@PathVariable Long product_id) {
-		return productService.updateProduct(product, product_id);
+	public ProductResponse updateProduct(ProductRequest productRequest, Long product_id) {
+		return productService.updateProduct(productRequest, product_id);
 	}
+
 	
 	@DeleteMapping("{product_id}")
-	public boolean deleteProduct(@PathVariable Long product_id) {
+	public boolean deleteProduct(Long product_id) {
 		return productService.deleteProduct(product_id);
 	}
+
 	
 	@GetMapping("lowStock/")
-	public List<Product> getLowStockProducts(@RequestParam int threshold){
+	public List<ProductResponse> getLowStockProducts(int threshold){
 		return productService.getLowStockProducts(threshold);
-		
 	}
+
 
 
 	

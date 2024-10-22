@@ -16,7 +16,9 @@ public class ProductRequest {
 	
  	private String name;
 	private String description;
-	private int quantity;
+	private Integer quantity;
 	private double price;
+	private Long category_id;    //to link with category
+	private Long supplier_id;   //to link with supplier
 
 }
