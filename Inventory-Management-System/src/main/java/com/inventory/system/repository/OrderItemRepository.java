@@ -1,13 +1,11 @@
 package com.inventory.system.repository;
 
- 
- 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.inventory.system.model.Category;
- 
-@Repository
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+import com.inventory.system.model.OrderItem;
 
- }
+@Repository
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
+
+}

@@ -31,13 +31,13 @@ public class ProductController {
 	
 	
 	@PostMapping
-	public ProductResponse createProduct(ProductRequest productRequest) {
+	public ProductResponse createProduct(@RequestBody ProductRequest productRequest) {
 		return productService.createProduct(productRequest);
 	}
 
 	
 	@GetMapping("{product_id}")
-	public ProductResponse getProductById(Long productId) {
+	public ProductResponse getProductById(@PathVariable Long productId) {
 		return productService.getProductById(productId);
 	}
 
@@ -49,19 +49,19 @@ public class ProductController {
 
 	
 	@PutMapping("update/{product_id}")
-	public ProductResponse updateProduct(ProductRequest productRequest, Long product_id) {
+	public ProductResponse updateProduct(@RequestBody ProductRequest productRequest,@PathVariable Long product_id) {
 		return productService.updateProduct(productRequest, product_id);
 	}
 
 	
 	@DeleteMapping("{product_id}")
-	public boolean deleteProduct(Long product_id) {
+	public boolean deleteProduct(@PathVariable Long product_id) {
 		return productService.deleteProduct(product_id);
 	}
 
 	
 	@GetMapping("lowStock/")
-	public List<ProductResponse> getLowStockProducts(int threshold){
+	public List<ProductResponse> getLowStockProducts(@RequestParam int threshold){
 		return productService.getLowStockProducts(threshold);
 	}
 

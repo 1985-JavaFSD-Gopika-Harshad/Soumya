@@ -1,8 +1,7 @@
 package com.inventory.system.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
-
-import com.inventory.system.model.Product;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,10 +14,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CategoryResponse {
-	
-	private Long category_id;
-	private String name;
-	
-	private List<Product> products;
+public class OrderResponse {
+	private Long order_id;
+	private double totalPrice;
+	private LocalDateTime orderDate;
+	private List<OrderItemResponse> orderItems;
+
+
+
 }

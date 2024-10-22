@@ -1,9 +1,8 @@
 package com.inventory.system.dto;
 
-import java.util.List;
+ import java.util.List;
 
-import com.inventory.system.model.Product;
-
+ 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,10 +14,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CategoryResponse {
+public class OrderRequest {
 	
-	private Long category_id;
-	private String name;
-	
-	private List<Product> products;
+	private List<OrderItemRequest> orderItems;
+
+
 }

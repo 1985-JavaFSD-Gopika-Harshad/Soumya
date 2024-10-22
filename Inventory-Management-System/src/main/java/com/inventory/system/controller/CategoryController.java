@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inventory.system.dto.CategoryRequest;
 import com.inventory.system.dto.CategoryResponse;
+import com.inventory.system.dto.ProductResponse;
 import com.inventory.system.service.CategoryService;
 
 @RestController
@@ -41,6 +42,11 @@ public class CategoryController {
 	public List<CategoryResponse> getAllCategories() {
 		return categoryService.getAllCategories();
 	}
+//	@GetMapping("products/{category_id}")
+//	public List<ProductResponse> getProductsBycategory_id(@PathVariable Long category_id){
+//		return categoryService.getProductsBycategory_id(category_id);
+//	}
+
 
 	@PutMapping("update/{category_id}")
 	public CategoryResponse updateCategory(@RequestBody CategoryRequest categoryRequest,@PathVariable Long category_id) {
