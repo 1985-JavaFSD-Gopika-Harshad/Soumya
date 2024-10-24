@@ -21,7 +21,7 @@ public class OrderResponse {
 	private Double totalPrice;
 	private Long user_id;
 	
-	private List<OrderItemDTO> orderitems;
+	private List<OrderItemResponse> orderitems;
 	
 
 }

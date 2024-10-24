@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class OrderItemDTO {
+public class OrderItemResponse {
 	
     private Long orderItem_id;
     private Long order_id;
