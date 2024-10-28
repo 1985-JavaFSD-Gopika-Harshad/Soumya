@@ -25,5 +25,9 @@ public class Review {
 	@JoinColumn(name ="recipe_id")
 	private Recipe recipe;
 	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 
 }

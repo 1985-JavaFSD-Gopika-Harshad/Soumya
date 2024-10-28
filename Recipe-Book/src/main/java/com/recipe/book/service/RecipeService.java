@@ -54,6 +54,12 @@ public class RecipeService {
 		 return true;
 		
 	}
+	 
+	 //search 
+	 public List<Recipe> searchRecipes(String query) {
+		    return recipeRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(query, query);
+		}
+
 	
 
 }

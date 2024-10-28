@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.recipe.book.model.Recipe;
@@ -28,7 +30,7 @@ public class RecipeController {
 	
 
 	
-	@PostMapping
+	@PostMapping("add")
 	public Recipe createRecipe(@RequestBody Recipe recipe) {
 		return recipeService.createRecipe(recipe);
 	}
@@ -58,6 +60,19 @@ public class RecipeController {
 		 return recipeService.deleteRecipe(recipeId);
 	 }
 
+	 
+	 @GetMapping("search/{query}")
+	 public List<Recipe> searchRecipes(@PathVariable("query") String query) {
+	     return recipeService.searchRecipes(query);
+	 }
+
+	 
+	 @GetMapping("recipes")
+	 public String getAllRecipes(Model model) {
+		 List<Recipe> recipes = recipeService.getAllRecipes();
+		 model.addAttribute("recipes", recipes);
+		 return "recipes";
+	 }
 
 
 
